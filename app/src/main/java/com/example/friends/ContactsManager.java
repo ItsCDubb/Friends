@@ -11,4 +11,8 @@ public class ContactsManager {
         Contact contact = new Contact(name, phoneNumber);
         friend.add(contact);
     }
+
+    public Contact getContact(int iterate){
+        return contacts.get(iterate);
+    }
 }
