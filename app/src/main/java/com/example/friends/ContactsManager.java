@@ -12,7 +12,7 @@ public class ContactsManager {
         friend.add(contact);
     }
 
-    public Contact getContact(int iterate){
-        return contacts.get(iterate);
+    public Contact getContact(int index){
+        return friend.get(index);
     }
 }
