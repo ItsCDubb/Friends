@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText friendsName;
     EditText friendsNumber;
     Button   createContact;
-    ListView contactInfo;
+    LinearLayout contactInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +36,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("Contact", "Create Contact was clicked");
                 contactsManager.createContact(friendsName.getText().toString(), friendsNumber.getText().toString());
-                TextView textView = new TextView(context);
-                textView.setText(friendsName.getText().toString() + " " + friendsNumber.getText().toString());
+                TextView textView = getTextView(context);
                 contactInfo.addView(textView);
+                friendsName.setText("");
+                friendsNumber.setText("");
 
 
             }
         });
 
+    }
+
+    private TextView getTextView(Context context) {
+        TextView textView = new TextView(context);
+        textView.setText(friendsName.getText().toString() + " " + friendsNumber.getText().toString());
+        return textView;
     }
 }
